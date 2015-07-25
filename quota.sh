@@ -25,8 +25,10 @@ do
     $method --security-group-rules 10000 $tenant
     $method --server-groups 10000 $tenant
     $method --server-group-members 10000 $tenant
-
-    # cinder quotas
-    cinder quota-update --volumes 10000 --snapshots 10000 --gigabytes 10000 $tenant
 done
 
+# cinder quotas
+
+# TODO
+# ensure that this oneliner works correctly :P
+keystone tenant-list | awk '$2 && $2 != "ID" {print $2}' | xargs -n1 cinder quota-update --volumes 10000 --snapshots 10000 --gigabytes 10000
