@@ -31,4 +31,4 @@ done
 
 # TODO
 # ensure that this oneliner works correctly :P
-keystone tenant-list | awk '$2 && $2 != "ID" {print $2}' | xargs -n1 cinder quota-update --volumes 10000 --snapshots 10000 --gigabytes 10000
+keystone tenant-list | awk '$2 && $2 != "id" {print $2}' | xargs -n1 cinder quota-update --volumes 10000 --snapshots 10000 --gigabytes 10000
